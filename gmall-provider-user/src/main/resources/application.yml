@@ -1,8 +1,22 @@
+
 spring:
   datasource:
     url: jdbc:mysql://localhost:3306/gmall-lby?characterEncoding=UTF-8
     username: root
     password: root
+  dubbo:
+    registry:
+      address: 192.168.183.170:6000
+      protocol: zookeeper
+    application:
+      name: gmall-provider-user
+    base-package: com.lby.gmall.user
+    protocol:
+      name: dubbo
+    consumer:
+      check: false
 mybatis:
   configuration:
     map-underscore-to-camel-case: true
+server:
+  port: 8070

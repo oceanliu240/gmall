@@ -1,0 +1,14 @@
+server:
+  port: 8081
+spring:
+  dubbo:
+    application:
+      name: gmall-consumer-manage
+    registry:
+      address: 192.168.183.170:6000
+      protocol: zookeeper
+    protocol: dubbo
+    base-package: com.lby.gmall.manage.controller
+  thymeleaf:
+    cache: false
+    mode: LEGACYHTML5

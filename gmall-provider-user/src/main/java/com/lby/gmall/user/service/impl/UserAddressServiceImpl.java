@@ -1,10 +1,11 @@
 package com.lby.gmall.user.service.impl;
 
+import com.alibaba.dubbo.config.annotation.Service;
 import com.lby.gmall.bean.UserAddress;
 import com.lby.gmall.service.UserAddressService;
 import com.lby.gmall.user.mapper.UserAddressMapper;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
+
 
 import java.util.List;
 
