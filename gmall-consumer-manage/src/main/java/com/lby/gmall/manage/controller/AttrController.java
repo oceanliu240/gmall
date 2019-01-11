@@ -7,6 +7,7 @@ import com.lby.gmall.bean.BaseCatalog2;
 import com.lby.gmall.bean.BaseCatalog3;
 import com.lby.gmall.service.AttrService;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -15,7 +16,7 @@ import java.util.List;
 @Controller
 public class AttrController {
 
-    @Reference
+    /*@Reference
     AttrService attrService;
 
 
@@ -56,5 +57,10 @@ public class AttrController {
         List<BaseCatalog3> baseCatalog3s = attrService.getCatalog3(catalog2Id);
 
         return baseCatalog3s;
+    }
+*/
+    @PostMapping("saveAttr")
+    public String saveAttr(BaseAttrInfo baseAttrInfo){
+        return "success";
     }
 }

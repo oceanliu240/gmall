@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 public class ManageController {
 
-    @GetMapping("index")
+   /* @GetMapping("index")
     public String index(){
         return "index";
     }
@@ -15,5 +15,5 @@ public class ManageController {
     @GetMapping("attrListPage")
     public String attrListPage(){
         return "attrListPage";
-    }
+    }*/
 }
