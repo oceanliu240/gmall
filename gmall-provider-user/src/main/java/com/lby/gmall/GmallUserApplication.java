@@ -1,4 +1,4 @@
-package com.lby.gmall.user;
+package com.lby.gmall;
 
 
 import org.springframework.boot.SpringApplication;

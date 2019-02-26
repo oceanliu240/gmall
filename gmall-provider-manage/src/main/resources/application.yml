@@ -14,8 +14,14 @@ spring:
       name: dubbo
     consumer:
       check: false
+  redis:
+    host: 192.168.183.170
+    port: 6379
+    timeout: 20000
+    database: 0
 mybatis:
   configuration:
     map-underscore-to-camel-case: true
+  mapper-locations: classpath:mapper/*Mapper.xml
 server:
   port: 8071

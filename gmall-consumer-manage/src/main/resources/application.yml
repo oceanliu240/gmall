@@ -12,3 +12,8 @@ spring:
   thymeleaf:
     cache: false
     mode: LEGACYHTML5
+
+fdfs :
+  tracker :
+    config :
+      location : classpath:tracker.conf

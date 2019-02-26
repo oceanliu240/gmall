@@ -16,7 +16,7 @@ import java.util.List;
 @Controller
 public class AttrController {
 
-    /*@Reference
+    @Reference
     AttrService attrService;
 
 
@@ -58,9 +58,10 @@ public class AttrController {
 
         return baseCatalog3s;
     }
-*/
     @PostMapping("saveAttr")
     public String saveAttr(BaseAttrInfo baseAttrInfo){
+
+        attrService.saveAttr(baseAttrInfo);
         return "success";
     }
 }

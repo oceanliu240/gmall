@@ -12,7 +12,11 @@ public interface UserService {
 
     List<UserAddress> getAddressListByUserId(String userId);
 
-    UserAddress getAddressListById(String addressId);
+    UserAddress getAddressById(String addressId);
 
     List<UserInfo> getUserList();
+
+    UserInfo login(UserInfo userInfo);
+
+    void addUserCache(UserInfo userLogin);
 }

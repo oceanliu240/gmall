@@ -11,6 +11,8 @@ public class WebMvcConfigurerAdapterOverride extends WebMvcConfigurerAdapter {
     public void addViewControllers(ViewControllerRegistry registry) {
         registry.addViewController("/index").setViewName("/index");
         registry.addViewController("/attrListPage").setViewName("attrListPage");
+        registry.addViewController("/spuListPage").setViewName("spuListPage");
+
     }
 
 }

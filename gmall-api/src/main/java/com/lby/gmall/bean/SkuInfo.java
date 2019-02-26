@@ -46,6 +46,9 @@ public class SkuInfo  implements Serializable {
     @Transient
     List<SkuSaleAttrValue> skuSaleAttrValueList;
 
+    @Transient
+    String saleAttrValueIds;
+
 
 
     public String getId() {
@@ -134,5 +137,13 @@ public class SkuInfo  implements Serializable {
 
     public void setSkuSaleAttrValueList(List<SkuSaleAttrValue> skuSaleAttrValueList) {
         this.skuSaleAttrValueList = skuSaleAttrValueList;
+    }
+
+    public String getSaleAttrValueIds() {
+        return saleAttrValueIds;
+    }
+
+    public void setSaleAttrValueIds(String saleAttrValueIds) {
+        this.saleAttrValueIds = saleAttrValueIds;
     }
 }

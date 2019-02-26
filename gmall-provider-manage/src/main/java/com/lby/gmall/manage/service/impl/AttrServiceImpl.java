@@ -2,17 +2,12 @@ package com.lby.gmall.manage.service.impl;
 
 import com.alibaba.dubbo.config.annotation.Service;
 
-import com.lby.gmall.bean.BaseAttrInfo;
-import com.lby.gmall.bean.BaseCatalog1;
-import com.lby.gmall.bean.BaseCatalog2;
-import com.lby.gmall.bean.BaseCatalog3;
-import com.lby.gmall.manage.mapper.BaseAttrInfoMapper;
-import com.lby.gmall.manage.mapper.BaseCatalog1Mapper;
-import com.lby.gmall.manage.mapper.BaseCatalog2Mapper;
-import com.lby.gmall.manage.mapper.BaseCatalog3Mapper;
+import com.lby.gmall.bean.*;
+import com.lby.gmall.manage.mapper.*;
 import com.lby.gmall.service.AttrService;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -20,6 +15,9 @@ public class AttrServiceImpl implements AttrService {
 
     @Autowired
     BaseAttrInfoMapper baseAttrInfoMapper;
+
+    @Autowired
+    BaseAttrValueMapper baseAttrValueMapper;
 
     @Autowired
     BaseCatalog1Mapper baseCatalog1Mapper;
@@ -59,7 +57,42 @@ public class AttrServiceImpl implements AttrService {
     public List<BaseAttrInfo> getAttrList(String catalog3Id) {
         BaseAttrInfo baseAttrInfo = new BaseAttrInfo();
         baseAttrInfo.setCatalog3Id(catalog3Id);
+
+        //　平台属性集合
         List<BaseAttrInfo> baseAttrInfos = baseAttrInfoMapper.select(baseAttrInfo);
+
+        for (BaseAttrInfo attrInfo : baseAttrInfos) {
+            List<BaseAttrValue> baseAttrValues = new ArrayList<>();
+
+            BaseAttrValue baseAttrValue = new BaseAttrValue();
+            baseAttrValue.setAttrId(attrInfo.getId());
+
+            // 平台属性值集合
+            baseAttrValues = baseAttrValueMapper.select(baseAttrValue);
+            attrInfo.setAttrValueList(baseAttrValues);
+        }
+
+        return baseAttrInfos;
+    }
+
+    @Override
+    public void saveAttr(BaseAttrInfo baseAttrInfo) {
+        baseAttrInfoMapper.insertSelective(baseAttrInfo);
+
+        //baseAttrInfo 插入后数据主键返回
+        String attrId = baseAttrInfo.getId();
+
+        List<BaseAttrValue> attrValueList = baseAttrInfo.getAttrValueList();
+
+        for (BaseAttrValue baseAttrValue : attrValueList) {
+            baseAttrValue.setAttrId(attrId);
+            baseAttrValueMapper.insertSelective(baseAttrValue);
+        }
+    }
+
+    @Override
+    public List<BaseAttrInfo> getAttrListByValueIds(String join) {
+        List<BaseAttrInfo> baseAttrInfos = baseAttrInfoMapper.selectAttrListByValueIds(join);
         return baseAttrInfos;
     }
 }
